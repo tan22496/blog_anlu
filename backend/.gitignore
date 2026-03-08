@@ -1,0 +1,5 @@
+env/
+images/
+*.pyc
+__pycache__/
+../__pycache__/

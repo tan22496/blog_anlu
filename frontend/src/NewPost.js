@@ -1,0 +1,40 @@
+import React, { useState } from "react";
+import "./NewPost.css"
+
+
+const BASE_URL = "http://localhost:8000/"
+
+function NewPost() {
+    const[image, setImage] = useState(null)
+    const[creator, setCreator] = useState('')
+    const[title, setTitle] = useState('')
+    const[text, setText] = useState('')
+
+    return (
+        <div className="newpost_content">
+            <div className="newpost_image">
+                <input type="file" id="fileInput" onChange={null} />
+            </div>
+            <div className="newpost_creator">
+                <input className="newpost_creator" type="text" id="creator_input"
+                placeholder="Creator" onChange={(event) => setCreator(event.target.value)}
+                value={creator} />
+            </div>
+            <div className="newpost_title">
+                <input className="newpost_title" type="text" id="title_input"
+                placeholder="Title" onChange={(event) => setCreator(event.target.value)}
+                value={title} />
+            </div>
+            <div className="newpost_text">
+                <input className="newpost_text" rows="10" id="content_input"
+                placeholder="Content" onChange={(event) => setCreator(event.target.value)}
+                value={text} />
+            </div>
+            <div>
+                <button className="create_button" onClick={null}>Create</button>
+            </div>
+        </div>
+    )
+}
+
+export default NewPost;

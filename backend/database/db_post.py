@@ -30,9 +30,18 @@ def create(db: Session, request: PostBase):
     return new_post
 
 def get_all(db: Session):
+    """
+    sử dụng db.query(DBPost).all() 
+    để truy xuất toàn bộ bản ghi có trong bảng `Post`
+    """
     return db.query(DbPost).all()
 
 def delete(id: int, db: Session):
+    """3 bước
+    - tìm kiếm bản ghi cần xoá
+    - kiểm tra tồn tại: ko có báo 404
+    - thực thi: thực hiện delete , commit để xác nhận thay đổi vào database
+    """
     post = db.query(DbPost).filter(DbPost.id == id).first()
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f'Post with {id} not found')
